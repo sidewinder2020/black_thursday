@@ -1,7 +1,8 @@
 class Merchant
   attr_reader :merchant_info
 
-  def initialize(merchant_info)
+  def initialize(merchant_info, sales_engine)
+    @se            = sales_engine
     @merchant_info = merchant_info
   end
 
@@ -14,11 +15,7 @@ class Merchant
   end
 
   def items
-    se = SalesEngine.from_csv({
-    :items     => "./data/items.csv",
-    :merchants => "./data/merchants.csv",
-    })
-    se.items.find_all_by_merchant_id(id)
+    @se.items.find_all_by_merchant_id(id)
   end
 
 end

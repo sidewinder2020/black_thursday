@@ -7,7 +7,8 @@ require 'pry'
 class ItemRepositoryTest < Minitest::Test
 
   def setup
-    @ir = ItemRepository.new("./data/items.csv")
+    @se = "not a sales engine"
+    @ir = ItemRepository.new("./data/items.csv", @se)
   end
 
   def test_it_exists
