@@ -30,6 +30,11 @@ class SalesAnalyst
     (Math.sqrt(deviant_number)).round(2)
   end
 
+  def average_items_per_merchant_standard_deviation
+    total = get_total_inventory
+    find_standard_deviation(total)
+  end
+
   def get_total_inventory
     total_inventory_array = []
     @se.merchants.all_ids.each do |id|
@@ -38,9 +43,25 @@ class SalesAnalyst
     total_inventory_array
   end
 
-  def average_items_per_merchant_standard_deviation
+  def find_inventory_total_one_std_deviation_above_avrg_std_deviation
     total = get_total_inventory
-    find_standard_deviation(total)
+    std_dev = find_standard_deviation(total)
+    mean = find_avrg_of_array(total)
+    outlier_threshhold = std_dev + mean
+    outlier_threshhold
   end
-  
+
+  def merchants_with_high_item_count
+    deviant_merchants = []
+    outlier_threshhold = find_inventory_total_one_std_deviation_above_avrg_std_deviation
+    @se.merchants.all.each do |merchant|
+      if merchant.items.count > outlier_threshhold
+        deviant_merchants << merchant
+      end
+    end
+    deviant_merchants
+  end
+
+  #sa.average_item_price_for_merchant(12334159)
+
 end
