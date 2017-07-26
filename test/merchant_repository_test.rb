@@ -54,4 +54,11 @@ class MerchantTest < Minitest::Test
     assert_equal 'littledorisdesigns', merchant[0].name
     assert_equal 'littledorisdesigns', merchant_upcase[0].name
   end
+
+  def test_create_array_of_merchant_ids
+    mr = MerchantRepository.new("./data/merchants.csv")
+
+    assert_equal 475, mr.all_ids.count
+    assert_instance_of Fixnum, mr.all_ids[27]
+  end
 end

@@ -21,6 +21,14 @@ class MerchantRepository
     @merchants
   end
 
+  def all_ids
+    id_array = []
+    @merchants.each do |merchant|
+      id_array << merchant.id
+    end
+    id_array
+  end
+
   def find_by_id(merchant_id, found_merchant = '')
     @merchants.each do |merchant|
       if merchant.id == merchant_id
