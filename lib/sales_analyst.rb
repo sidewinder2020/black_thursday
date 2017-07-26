@@ -62,6 +62,24 @@ class SalesAnalyst
     deviant_merchants
   end
 
-  #sa.average_item_price_for_merchant(12334159)
+  def get_item_prices_by_merchant_id(merchant_id, item_prices = [])
+    items = @se.items.find_all_by_merchant_id(merchant_id)
+      items.each do |item|
+        item_prices << item.unit_price
+      end
+      item_prices
+  end
+
+  def average_item_price_for_merchant(merchant_id)
+    item_prices = get_item_prices_by_merchant_id(merchant_id)
+    find_avrg_of_array(item_prices)
+  end
+
+  def average_average_price_per_merchant(avrg_avrg_array = [])
+    @se.merchants.all_ids.each do |merchant|
+      avrg_avrg_array << average_item_price_for_merchant(merchant)
+    end
+    find_avrg_of_array(avrg_avrg_array)
+  end
 
 end
