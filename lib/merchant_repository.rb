@@ -63,4 +63,16 @@ class MerchantRepository
     found_merchants
   end
 
+  def get_total_inventory
+    total_inventory_array = []
+    @merchants.each do |merchant|
+      total_inventory_array << merchant_items_count(merchant.id)
+    end
+    total_inventory_array
+  end
+
+  def merchant_items_count(merchant_id)
+    array = @se.items.find_all_by_merchant_id(merchant_id)
+    array.length
+  end
 end
