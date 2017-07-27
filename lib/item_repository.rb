@@ -71,7 +71,7 @@ class ItemRepository
   end
 
   def get_item_prices_by_merchant_id(merchant_id, item_prices = [])
-    items = @se.items.find_all_by_merchant_id(merchant_id)
+    items = @se.find_all_by_merchant_id(merchant_id)
       items.each do |item|
         item_prices << item.unit_price
       end
