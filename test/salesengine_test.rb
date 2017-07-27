@@ -24,6 +24,10 @@ class SalesEngineTest < Minitest::Test
   end
 
   def test_find_all_items_by_merchant_id
-    assert_equal 1, @se.find_all_by_merchant_id(12334149).count
+    assert_instance_of Item, @se.find_all_by_merchant_id(12334149).first
+  end
+
+  def test_find_all_merchant_items_count
+    assert_equal 1, @se.merchant_items_count(12334149)
   end
 end
