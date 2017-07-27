@@ -75,4 +75,13 @@ class MerchantRepository
     array = @se.items.find_all_by_merchant_id(merchant_id)
     array.length
   end
+
+  def return_merchants_by_item_count_greater_than(condition, results = [])
+    @merchants.each do |merchant|
+      if merchant.items.count > condition
+        results << merchant
+      end
+    end
+    results
+  end
 end

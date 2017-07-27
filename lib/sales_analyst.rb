@@ -47,14 +47,8 @@ class SalesAnalyst
 
   #stay
   def merchants_with_high_item_count
-    deviant_merchants = []
     outlier_threshhold = find_inventory_total_one_std_deviation_above_avrg_std_deviation
-    @se.merchants.all.each do |merchant|
-      if merchant.items.count > outlier_threshhold
-        deviant_merchants << merchant
-      end
-    end
-    deviant_merchants
+    @se.merchants.return_merchants_by_item_count_greater_than(outlier_threshhold)
   end
 
   #live in items

@@ -20,6 +20,10 @@ class MerchantRepositoryTest < Minitest::Test
     assert_instance_of MerchantRepository, @mr
   end
 
+  def test_merchants_all
+    assert_equal 475, @mr.all.count
+  end
+  
   def test_all_returns_all_merchants_in_the_correct_format
     assert_instance_of Merchant, @mr.merchants[0]
     assert_equal 'Shopin1901', @mr.merchants[0].name
@@ -71,5 +75,10 @@ class MerchantRepositoryTest < Minitest::Test
     assert_equal 3, @mr.merchant_items_count(12334105)
     assert_equal 25, @mr.merchant_items_count(12334123)
     assert_equal 0, @mr.merchant_items_count(12334110)
+  end
+
+  def test_return_merchants_by_item_count_greater_than
+    assert_equal 15, @mr.return_merchants_by_item_count_greater_than(10).count
+    assert_equal 9, @mr.return_merchants_by_item_count_greater_than(12).count
   end
 end
