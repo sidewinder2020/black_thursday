@@ -13,7 +13,8 @@ class MerchantRepository
   end
 
   def load_csv(filepath)
-    CSV.foreach(filepath, headers: true, header_converters: :symbol, converters: :numeric) do |row|
+    CSV.foreach(filepath, headers: true, header_converters: :symbol,
+     converters: :numeric) do |row|
       @merchants << Merchant.new(row.to_h, @se)
     end
   end

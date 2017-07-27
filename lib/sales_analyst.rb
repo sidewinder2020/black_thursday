@@ -28,7 +28,8 @@ class SalesAnalyst
     array.each do |number|
       deviant_array << (mean - number)**2
     end
-    deviant_number = (deviant_array.reduce(:+)) / ((deviant_array.length - 1).to_f)
+    deviant_number =
+    (deviant_array.reduce(:+)) / ((deviant_array.length - 1).to_f)
     (Math.sqrt(deviant_number)).round(2)
   end
 
@@ -38,7 +39,7 @@ class SalesAnalyst
   end
 
   #stay
-  def find_inventory_total_one_std_deviation_above_avrg_std_deviation
+  def find_inventory_total_one_std_deviation_above_avrg
     std_dev = find_standard_deviation(merchants_total_inventory)
     mean = find_avrg_of_array(merchants_total_inventory)
     outlier_threshhold = std_dev + mean
@@ -47,8 +48,8 @@ class SalesAnalyst
 
   #stay
   def merchants_with_high_item_count
-    outlier_threshhold = find_inventory_total_one_std_deviation_above_avrg_std_deviation
-    @se.merchants.return_merchants_by_item_count_greater_than(outlier_threshhold)
+    outliers = find_inventory_total_one_std_deviation_above_avrg
+    @se.merchants.return_merchants_by_item_count_greater_than(outliers)
   end
 
   #live in items

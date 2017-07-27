@@ -23,7 +23,7 @@ class MerchantRepositoryTest < Minitest::Test
   def test_merchants_all
     assert_equal 475, @mr.all.count
   end
-  
+
   def test_all_returns_all_merchants_in_the_correct_format
     assert_instance_of Merchant, @mr.merchants[0]
     assert_equal 'Shopin1901', @mr.merchants[0].name
@@ -34,7 +34,7 @@ class MerchantRepositoryTest < Minitest::Test
   def test_find_by_id_returns_specified_merchant_instance
     merchant = @mr.find_by_id(12334105)
     nil_merchant = @mr.find_by_id(1231412543534543)
-
+    
     assert_equal 'Shopin1901', merchant.name
     assert_nil nil_merchant
   end
