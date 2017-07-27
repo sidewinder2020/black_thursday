@@ -73,7 +73,7 @@ class MerchantRepository
   end
 
   def merchant_items_count(merchant_id)
-    array = @se.items.find_all_by_merchant_id(merchant_id)
+    array = @se.find_all_by_merchant_id(merchant_id)
     array.length
   end
 

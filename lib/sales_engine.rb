@@ -18,16 +18,16 @@ class SalesEngine
     @merchants = MerchantRepository.new(csv_hash[:merchants], self)
   end
 
-  def get_merchants_total_inventory
-    @merchants.get_total_inventory
-  end
-
   def all_items
     @items.all
   end
 
   def all_merchant_ids
     @merchants.all_ids
+  end
+
+  def get_merchants_total_inventory
+    @merchants.get_total_inventory
   end
 
   def get_item_prices_by_merchant_id(merchant_id)
@@ -39,8 +39,7 @@ class SalesEngine
   end
 
   def merchant_items_count(merchant_id)
-    array = @items.find_all_by_merchant_id(merchant_id)
-    array.length
+    @items.find_all_by_merchant_id(merchant_id).length
   end
 
   def find_all_by_merchant_id(merchant_id)
