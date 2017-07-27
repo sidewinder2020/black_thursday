@@ -7,24 +7,13 @@ class SalesAnalyst
     @se = sales_engine
   end
 
-  #merchant, as well as one below
-  def merchant_items_count(merchant_id)
-    array = @se.items.find_all_by_merchant_id(merchant_id)
-    array.length
-  end
-
-  #merchant, as well as one above it
-  def get_total_inventory
-    total_inventory_array = []
-    @se.merchants.all_ids.each do |id|
-      total_inventory_array << merchant_items_count(id)
-    end
-    total_inventory_array
+  def merchants_total_inventory
+    @se.merchants.get_total_inventory
   end
 
   #stay
   def average_items_per_merchant
-    find_avrg_of_array(get_total_inventory)
+    find_avrg_of_array(merchants_total_inventory)
   end
 
   #stay
@@ -45,29 +34,21 @@ class SalesAnalyst
 
   #stay
   def average_items_per_merchant_standard_deviation
-    total = get_total_inventory
-    find_standard_deviation(total)
+    find_standard_deviation(merchants_total_inventory)
   end
 
   #stay
   def find_inventory_total_one_std_deviation_above_avrg_std_deviation
-    total = get_total_inventory
-    std_dev = find_standard_deviation(total)
-    mean = find_avrg_of_array(total)
+    std_dev = find_standard_deviation(merchants_total_inventory)
+    mean = find_avrg_of_array(merchants_total_inventory)
     outlier_threshhold = std_dev + mean
     outlier_threshhold
   end
 
   #stay
   def merchants_with_high_item_count
-    deviant_merchants = []
     outlier_threshhold = find_inventory_total_one_std_deviation_above_avrg_std_deviation
-    @se.merchants.all.each do |merchant|
-      if merchant.items.count > outlier_threshhold
-        deviant_merchants << merchant
-      end
-    end
-    deviant_merchants
+    @se.merchants.return_merchants_by_item_count_greater_than(outlier_threshhold)
   end
 
   #live in items

@@ -21,12 +21,6 @@ class SalesAnalystTest < Minitest::Test
     assert_instance_of SalesAnalyst, @sa
   end
 
-  def test_retrieve_number_of_items_for_one_merchant
-    item_count = @sa.merchant_items_count(12334105)
-
-    assert_equal 3, item_count
-  end
-
   def test_find_avrg_items_per_merchant
     assert_equal 2.88, @sa.average_items_per_merchant
   end
