@@ -1,5 +1,4 @@
-require 'simplecov'
-SimpleCov.start
+require_relative 'item'
 
 class ItemRepository
 
@@ -12,11 +11,14 @@ class ItemRepository
   end
 
   def load_csv(filepath)
-    CSV.foreach(filepath, headers: true, header_converters: :symbol,
-     converters: :all) do |row|
-      @items << Item.new(row.to_h, @se)
+    CSV.foreach(filepath, headers: true,
+                          header_converters: :symbol,
+                          converters: :all) do |row|
+      @items << Item.new(row.to_h, self)
     end
   end
+
+  #def find_by_id
 
   def all
     @items
@@ -64,18 +66,34 @@ class ItemRepository
     end
   end
 
-  def find_all_by_merchant_id(merchant_id)
+  def find_all_items_by_merchant_id(merchant_id)
     @items.find_all do |item|
       item.merchant_id == merchant_id
     end
   end
 
   def get_item_prices_by_merchant_id(merchant_id, item_prices = [])
-    items = @se.find_all_by_merchant_id(merchant_id)
+    items = find_all_items_by_merchant_id(merchant_id)
       items.each do |item|
         item_prices << item.unit_price
       end
       item_prices
+  end
+
+  def find_merchant_id_by_item_id(item_id)
+    item = @items.find do |item|
+      item.id == item_id
+    end
+    item.merchant_id
+  end
+
+  def return_merchant_by_item_id(item_id)
+    merchant_id = find_merchant_id_by_item_id(item_id)
+    @se.get_merchant_by_id(merchant_id)
+  end
+
+  def inspect
+    "#<#{self.class} #{@merchants.size} rows>"
   end
 
 end

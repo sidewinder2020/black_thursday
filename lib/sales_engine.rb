@@ -1,8 +1,6 @@
-require 'simplecov'
-SimpleCov.start
 
-require './lib/item_repository'
-require './lib/merchant_repository'
+require_relative '../lib/item_repository'
+require_relative '../lib/merchant_repository'
 
 class SalesEngine
   attr_reader :files,
@@ -39,10 +37,15 @@ class SalesEngine
   end
 
   def merchant_items_count(merchant_id)
-    @items.find_all_by_merchant_id(merchant_id).length
+    @items.find_all_items_by_merchant_id(merchant_id).length
   end
 
-  def find_all_by_merchant_id(merchant_id)
-    @items.find_all_by_merchant_id(merchant_id)
+  def find_all_items_by_merchant_id(merchant_id)
+    @items.find_all_items_by_merchant_id(merchant_id)
   end
+
+  def get_merchant_by_id(merchant_id)
+    @merchants.find_by_id(merchant_id)
+  end
+
 end

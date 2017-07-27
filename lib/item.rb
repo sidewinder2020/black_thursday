@@ -1,5 +1,4 @@
-require 'simplecov'
-SimpleCov.start
+
 
 class Item
   attr_reader :item_info,
@@ -11,8 +10,8 @@ class Item
               :created_at,
               :updated_at
 
-  def initialize(item_info, sales_engine)
-    @se                = sales_engine
+  def initialize(item_info, ir)
+    @ir                = ir
     @item_info         = item_info
     @id                = item_info[:id]
     @name              = item_info[:name]
@@ -28,7 +27,7 @@ class Item
   end
 
   def merchant
-    @se.merchants.find_by_id(merchant_id)
+    @ir.return_merchant_by_item_id(@id)
   end
 
 end

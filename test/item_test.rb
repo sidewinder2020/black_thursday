@@ -11,15 +11,16 @@ class ItemTest < Minitest::Test
     :items     => "./data/items.csv",
     :merchants => "./data/merchants.csv",
     })
+    @ir = ItemRepository.new("./data/items.csv", @se)
     @item = Item.new({
-                    :id          => 1,
+                    :id          => 263395237,
                     :name        => "Pencil",
                     :description => "You can use it to write things",
                     :unit_price  => 50000,
-                    :merchant_id => 12334132,
+                    :merchant_id => 12334189,
                     :created_at  => "2016-01-11 11:44:00 UTC",
                     :updated_at  => "2006-08-26 06:56:21 UTC"
-                  }, @se)
+                  }, @ir)
   end
 
   def test_it_exists
@@ -27,7 +28,7 @@ class ItemTest < Minitest::Test
   end
 
   def test_it_has_an_id
-    assert_equal 1, @item.id
+    assert_equal 263395237, @item.id
   end
 
   def test_it_has_a_name
@@ -43,7 +44,7 @@ class ItemTest < Minitest::Test
   end
 
   def test_it_has_a_merchant_id
-    assert_equal 12334132, @item.merchant_id
+    assert_equal 12334189, @item.merchant_id
   end
 
   def test_it_has_a_created_at_date

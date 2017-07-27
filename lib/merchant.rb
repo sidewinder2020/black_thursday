@@ -1,8 +1,8 @@
 class Merchant
   attr_reader :merchant_info
 
-  def initialize(merchant_info, sales_engine)
-    @se            = sales_engine
+  def initialize(merchant_info, mr)
+    @mr            = mr
     @merchant_info = merchant_info
   end
 
@@ -15,7 +15,7 @@ class Merchant
   end
 
   def items
-    @se.items.find_all_by_merchant_id(id)
+    @mr.find_all_items_by_merchant_id(id)
   end
 
 end

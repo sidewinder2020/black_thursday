@@ -1,5 +1,4 @@
-require 'pry'
-require './lib/sales_engine'
+require_relative '../lib/sales_engine'
 
 class SalesAnalyst
 
@@ -66,7 +65,6 @@ class SalesAnalyst
     price_array
   end
 
-  #call array from item repo
   def golden_items
     price_array = array_of_item_prices
     avrg = find_avrg_of_array(price_array)
