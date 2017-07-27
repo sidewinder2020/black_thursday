@@ -11,17 +11,14 @@ class SalesAnalyst
     @se.merchants.get_total_inventory
   end
 
-  #stay
   def average_items_per_merchant
     find_avrg_of_array(merchants_total_inventory)
   end
 
-  #stay
   def find_avrg_of_array(array)
     (array.reduce(:+) / array.length.to_f).round(2)
   end
 
-  #stay
   def find_standard_deviation(array)
     deviant_array = []
     mean = find_avrg_of_array(array)
@@ -38,7 +35,6 @@ class SalesAnalyst
     find_standard_deviation(merchants_total_inventory)
   end
 
-  #stay
   def find_inventory_total_one_std_deviation_above_avrg
     std_dev = find_standard_deviation(merchants_total_inventory)
     mean = find_avrg_of_array(merchants_total_inventory)
@@ -46,28 +42,16 @@ class SalesAnalyst
     outlier_threshhold
   end
 
-  #stay
   def merchants_with_high_item_count
     outliers = find_inventory_total_one_std_deviation_above_avrg
     @se.merchants.return_merchants_by_item_count_greater_than(outliers)
   end
 
-  #live in items
-  def get_item_prices_by_merchant_id(merchant_id, item_prices = [])
-    items = @se.items.find_all_by_merchant_id(merchant_id)
-      items.each do |item|
-        item_prices << item.unit_price
-      end
-      item_prices
-  end
-
-  #live in items
   def average_item_price_for_merchant(merchant_id)
-    item_prices = get_item_prices_by_merchant_id(merchant_id)
+    item_prices = @se.items.get_item_prices_by_merchant_id(merchant_id)
     find_avrg_of_array(item_prices)
   end
 
-  #live in merchants
   def average_average_price_per_merchant(avrg_avrg_array = [])
     @se.merchants.all_ids.each do |merchant|
       avrg_avrg_array << average_item_price_for_merchant(merchant)
@@ -75,7 +59,6 @@ class SalesAnalyst
     find_avrg_of_array(avrg_avrg_array)
   end
 
-  #item repo
   def array_of_item_prices(price_array = [])
     @se.items.all.each do |item|
       price_array << item.unit_price
