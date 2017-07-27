@@ -82,4 +82,30 @@ class SalesAnalyst
     find_avrg_of_array(avrg_avrg_array)
   end
 
+  def array_of_item_prices(price_array = [])
+    @se.items.all.each do |item|
+      price_array << item.unit_price
+    end
+    price_array
+  end
+
+  def average_item_price
+    find_avrg_of_array(array_of_item_prices)
+  end
+
+  def average_item_price_standard_deviation
+    find_standard_deviation(array_of_item_prices)
+  end
+
+  def golden_items
+    golden_array = []
+    std_dev = average_item_price_standard_deviation
+    @se.items.all.each do |item|
+      if item.unit_price >= std_dev*2 + average_item_price
+        golden_array << item
+      end
+    end
+      golden_array
+  end
+
 end

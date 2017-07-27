@@ -50,4 +50,8 @@ class SalesAnalystTest < Minitest::Test
     assert_equal 35029.47, @sa.average_average_price_per_merchant
   end
 
+  def test_for_golden_items_two_std_dev_above_avrg
+    assert_equal 5, @sa.golden_items.count
+  end
+
 end
