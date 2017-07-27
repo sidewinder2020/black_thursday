@@ -14,8 +14,8 @@ class SalesEngine
   end
 
   def initialize(csv_hash)
-    @items = ItemRepository.new(csv_hash[:items])
-    @merchants = MerchantRepository.new(csv_hash[:merchants])
+    @items = ItemRepository.new(csv_hash[:items], self)
+    @merchants = MerchantRepository.new(csv_hash[:merchants], self)
   end
 
 end

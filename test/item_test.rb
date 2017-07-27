@@ -7,15 +7,19 @@ require 'bigdecimal'
 class ItemTest < Minitest::Test
 
   def setup
+    @se = SalesEngine.from_csv({
+    :items     => "./data/items.csv",
+    :merchants => "./data/merchants.csv",
+    })
     @item = Item.new({
                     :id          => 1,
                     :name        => "Pencil",
                     :description => "You can use it to write things",
                     :unit_price  => 50000,
-                    :merchant_id => 66696969,
+                    :merchant_id => 12334132,
                     :created_at  => "2016-01-11 11:44:00 UTC",
                     :updated_at  => "2006-08-26 06:56:21 UTC"
-                  })
+                  }, @se)
   end
 
   def test_it_exists
@@ -39,7 +43,7 @@ class ItemTest < Minitest::Test
   end
 
   def test_it_has_a_merchant_id
-    assert_equal 66696969, @item.merchant_id
+    assert_equal 12334132, @item.merchant_id
   end
 
   def test_it_has_a_created_at_date
@@ -55,14 +59,7 @@ class ItemTest < Minitest::Test
   end
 
   def test_it_can_find_merchant_by_item_id
-    se = SalesEngine.from_csv({
-    :items     => "./data/items.csv",
-    :merchants => "./data/merchants.csv",
-    })
-
-    item = se.items.find_by_id(263395237)
-
-    assert_instance_of Merchant, item.merchant
+    assert_instance_of Merchant, @item.merchant
   end
 
 end
