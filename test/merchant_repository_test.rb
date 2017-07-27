@@ -9,7 +9,10 @@ class MerchantRepositoryTest < Minitest::Test
 # REFACTOR TO USE DUMMY DATA
 
   def setup
-    @se = "not a sales engine"
+    @se = SalesEngine.from_csv({
+        :items     => "./data/items.csv",
+        :merchants => "./data/merchants.csv",
+        })
     @mr = MerchantRepository.new("./data/merchants.csv", @se)
   end
 
@@ -57,5 +60,16 @@ class MerchantRepositoryTest < Minitest::Test
   def test_create_array_of_merchant_ids
     assert_equal 475, @mr.all_ids.count
     assert_instance_of Fixnum, @mr.all_ids[27]
+  end
+
+  def test_get_total_inventory
+    assert_equal 475, @mr.get_total_inventory.count
+    assert_instance_of Fixnum, @mr.get_total_inventory[5]
+  end
+
+  def test_merchant_items_count
+    assert_equal 3, @mr.merchant_items_count(12334105)
+    assert_equal 25, @mr.merchant_items_count(12334123)
+    assert_equal 0, @mr.merchant_items_count(12334110)
   end
 end
