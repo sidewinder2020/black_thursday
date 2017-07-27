@@ -12,7 +12,8 @@ class ItemRepository
   end
 
   def load_csv(filepath)
-    CSV.foreach(filepath, headers: true, header_converters: :symbol, converters: :all) do |row|
+    CSV.foreach(filepath, headers: true, header_converters: :symbol,
+     converters: :all) do |row|
       @items << Item.new(row.to_h, @se)
     end
   end
