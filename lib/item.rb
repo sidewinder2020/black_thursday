@@ -11,7 +11,8 @@ class Item
               :created_at,
               :updated_at
 
-  def initialize(item_info)
+  def initialize(item_info, sales_engine)
+    @se                = sales_engine
     @item_info         = item_info
     @id                = item_info[:id]
     @name              = item_info[:name]
@@ -27,11 +28,7 @@ class Item
   end
 
   def merchant
-    se = SalesEngine.from_csv({
-    :items     => "./data/items.csv",
-    :merchants => "./data/merchants.csv",
-    })
-    se.merchants.find_by_id(merchant_id)
+    @se.merchants.find_by_id(merchant_id)
   end
 
 end

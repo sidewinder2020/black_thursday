@@ -5,14 +5,15 @@ class ItemRepository
 
   attr_reader :items
 
-  def initialize(filepath)
+  def initialize(filepath, sales_engine)
     @items = []
+    @se = sales_engine
     load_csv(filepath)
   end
 
   def load_csv(filepath)
     CSV.foreach(filepath, headers: true, header_converters: :symbol, converters: :all) do |row|
-      @items << Item.new(row.to_h)
+      @items << Item.new(row.to_h, @se)
     end
   end
 
