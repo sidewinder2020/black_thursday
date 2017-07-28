@@ -15,7 +15,7 @@ class Merchant
   end
 
   def items
-    @mr.find_all_items_by_merchant_id(id)
+    @mr.find_all_by_merchant_id(id)
   end
 
 end

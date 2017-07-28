@@ -1,4 +1,5 @@
 require_relative '../lib/sales_engine'
+require 'bigdecimal'
 
 class SalesAnalyst
 

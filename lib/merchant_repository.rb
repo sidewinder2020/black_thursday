@@ -88,8 +88,8 @@ class MerchantRepository
     @se.find_by_merchant_id(merchant_id)
   end
 
-  def find_all_items_by_merchant_id(merchant_id)
-    @se.find_all_items_by_merchant_id(merchant_id)
+  def find_all_by_merchant_id(merchant_id)
+    @se.find_all_by_merchant_id(merchant_id)
   end
 
   def inspect

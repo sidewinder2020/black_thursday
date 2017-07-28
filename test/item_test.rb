@@ -1,4 +1,5 @@
 require './lib/item'
+require 'time'
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'pry'
@@ -40,7 +41,7 @@ class ItemTest < Minitest::Test
   end
 
   def test_it_has_a_unit_price
-    assert_equal 50000, @item.unit_price
+    assert_instance_of BigDecimal, @item.unit_price
   end
 
   def test_it_has_a_merchant_id
@@ -48,11 +49,11 @@ class ItemTest < Minitest::Test
   end
 
   def test_it_has_a_created_at_date
-    assert_equal "2016-01-11 11:44:00 UTC", @item.created_at
+    assert_equal Time.parse('2016-01-11 11:44:00 UTC'), @item.created_at
   end
 
   def test_it_has_an_updated_date
-    assert_equal "2006-08-26 06:56:21 UTC", @item.updated_at
+    assert_equal Time.parse('2006-08-26 06:56:21 UTC'), @item.updated_at
   end
 
   def test_it_can_convert_unit_price_to_dollars

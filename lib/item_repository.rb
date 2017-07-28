@@ -1,4 +1,5 @@
 require_relative 'item'
+require 'bigdecimal'
 
 class ItemRepository
 
@@ -17,8 +18,6 @@ class ItemRepository
       @items << Item.new(row.to_h, self)
     end
   end
-
-  #def find_by_id
 
   def all
     @items
@@ -56,24 +55,24 @@ class ItemRepository
 
   def find_all_by_price(price)
     @items.find_all do |item|
-      item.unit_price == price
+      item.unit_price == BigDecimal.new(price, 6)
     end
   end
 
   def find_all_by_price_in_range(price_range)
     @items.find_all do |item|
-      item.unit_price <= price_range.max && item.unit_price >= price_range.min
+       item.unit_price >= price_range.min && item.unit_price <= price_range.max
     end
   end
 
-  def find_all_items_by_merchant_id(merchant_id)
+  def find_all_by_merchant_id(merchant_id)
     @items.find_all do |item|
       item.merchant_id == merchant_id
     end
   end
 
   def get_item_prices_by_merchant_id(merchant_id, item_prices = [])
-    items = find_all_items_by_merchant_id(merchant_id)
+    items = find_all_by_merchant_id(merchant_id)
       items.each do |item|
         item_prices << item.unit_price
       end
@@ -93,7 +92,7 @@ class ItemRepository
   end
 
   def inspect
-    "#<#{self.class} #{@merchants.size} rows>"
+    "#<#{self.class} #{@items.size} rows>"
   end
 
 end

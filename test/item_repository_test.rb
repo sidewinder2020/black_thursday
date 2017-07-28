@@ -1,4 +1,5 @@
 require './lib/item'
+require 'bigdecimal'
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'pry'
@@ -55,24 +56,25 @@ class ItemRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_all_by_price
-    items = @ir.find_all_by_price(50000)
+    price = BigDecimal.new(25)
+    items = @ir.find_all_by_price(price)
 
-    assert_equal 11, items.count
-    assert_equal 50000, items[0].unit_price
-    assert_equal 50000, items[7].unit_price
+    assert_equal 79, items.count
+    assert_equal 25.00, items[0].unit_price_to_dollars
+    assert_equal 25.00, items[7].unit_price_to_dollars
   end
 
   def test_it_finds_all_by_price_in_range
-    price_range = Range.new(47000,50000)
+    price_range = (1000.00..1500.00)
     price_range_items = @ir.find_all_by_price_in_range(price_range)
 
-    assert_equal 13, price_range_items.count
-    assert price_range_items[0].unit_price >= 47000 && price_range_items[0].unit_price <= 50000
+    assert_equal 19, price_range_items.count
+    assert price_range_items[0].unit_price >= 1000 && price_range_items[0].unit_price <= 1500
   end
 
   def test_it_finds_all_by_merchant_id
-    items = @ir.find_all_items_by_merchant_id(12334132)
-    empty_items = @ir.find_all_items_by_merchant_id(90210878)
+    items = @ir.find_all_by_merchant_id(12334132)
+    empty_items = @ir.find_all_by_merchant_id(90210878)
 
     assert_equal 3, items.count
     assert_equal 12334132, items[0].merchant_id

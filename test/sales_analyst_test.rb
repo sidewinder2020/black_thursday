@@ -34,14 +34,14 @@ class SalesAnalystTest < Minitest::Test
   end
 
   def test_average_item_price_for_merchant
-    assert_equal 3150.0, @sa.average_item_price_for_merchant(12334159)
-    assert_equal 1683.33, @sa.average_item_price_for_merchant(12334372)
-    assert_equal 3000.0, @sa.average_item_price_for_merchant(12335722)
-    assert_equal 2000.0, @sa.average_item_price_for_merchant(12336683)
+    assert_equal 31.5, @sa.average_item_price_for_merchant(12334159)
+    assert_equal 16.83, @sa.average_item_price_for_merchant(12334372)
+    assert_equal 30.00, @sa.average_item_price_for_merchant(12335722)
+    assert_equal 20.00, @sa.average_item_price_for_merchant(12336683)
   end
 
   def test_the_average_average_price_per_merchant
-    assert_equal 35029.47, @sa.average_average_price_per_merchant
+    assert_equal 350.29, @sa.average_average_price_per_merchant
   end
 
   def test_for_golden_items_two_std_dev_above_avrg
