@@ -13,9 +13,27 @@ class SalesEngine
   end
 
   def initialize(csv_hash)
-      @items = ItemRepository.new(csv_hash[:items], self)
-      @merchants = MerchantRepository.new(csv_hash[:merchants], self)
-      @invoices = InvoiceRepository.new(csv_hash[:invoices], self)
+      @items = item_repository(csv_hash)
+      @merchants = merchant_repository(csv_hash)
+      @invoices = invoice_repository(csv_hash)
+  end
+
+  def item_repository(csv_hash)
+    if csv_hash[:items]
+      ItemRepository.new(csv_hash[:items], self)
+    end
+  end
+
+  def merchant_repository(csv_hash)
+    if csv_hash[:merchants]
+      MerchantRepository.new(csv_hash[:merchants], self)
+    end
+  end
+
+  def invoice_repository(csv_hash)
+    if csv_hash[:invoices]
+      InvoiceRepository.new(csv_hash[:invoices], self)
+    end
   end
 
   def all_items

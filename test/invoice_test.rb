@@ -10,11 +10,9 @@ class InvoiceTest < Minitest::Test
 
   def setup
     @se = SalesEngine.from_csv({
-                                :items     => "./data/items.csv",
-                                :merchants => "./data/merchants.csv",
-                                :invoices => "./data/invoices.csv",
+                                :invoices => "./test/test_data/invoices_short.csv"
                                 })
-    @inr = InvoiceRepository.new("./data/invoices.csv", @se)
+    @inr = InvoiceRepository.new("./test/test_data/invoices_short.csv", @se)
     @invoice = Invoice.new({
                       :id          => 6,
                       :customer_id => 7,
@@ -23,7 +21,7 @@ class InvoiceTest < Minitest::Test
                       :created_at  => "2014-04-13",
                       :updated_at  => "2015-01-20",
                       }, @inr)
-    end
+  end
 
   def test_it_exists
     assert_instance_of Invoice, @invoice
@@ -37,5 +35,5 @@ class InvoiceTest < Minitest::Test
     assert_equal Time.parse("2014-04-13"), @invoice.created_at
     assert_equal Time.parse("2015-01-20"), @invoice.updated_at
   end
-  
+
 end

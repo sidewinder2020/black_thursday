@@ -47,19 +47,8 @@ attr_reader :invoices
   end
 
   def find_all_by_status(status)
-    status = convert_status_to_int(status)
     @invoices.find_all do |invoice|
       invoice.status == status
-    end
-  end
-
-  def convert_status_to_int(status)
-    if status == "pending"
-      return 1
-    elsif status == "shipped"
-      return 2
-    elsif status == "returned"
-      return 3
     end
   end
 

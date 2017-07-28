@@ -79,4 +79,6 @@ class SalesAnalyst
       golden_array
   end
 
+  # sa.average_invoices_per_merchant # => 10.49
+  # sa.average_invoices_per_merchant_standard_deviation # => 3.29
 end

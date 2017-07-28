@@ -1,7 +1,7 @@
 require './lib/item'
 require 'bigdecimal'
 require 'minitest/autorun'
-require 'minitest/pride'
+require 'minitest/nyan_cat'
 require 'pry'
 
 
@@ -9,9 +9,8 @@ class ItemRepositoryTest < Minitest::Test
 
   def setup
     @se = SalesEngine.from_csv({
-        :items     => "./data/items.csv",
         :merchants => "./data/merchants.csv",
-        :invoices => "./data/invoices.csv",
+        :items     => "./data/items.csv"
         })
     @ir = ItemRepository.new("./data/items.csv", @se)
   end
