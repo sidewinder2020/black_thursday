@@ -10,6 +10,7 @@ class MerchantTest < Minitest::Test
     @se = SalesEngine.from_csv({
     :items     => "./data/items.csv",
     :merchants => "./data/merchants.csv",
+    :invoices => "./data/invoices.csv",
     })
     @merchant = Merchant.new({:id => 12334105, :name => 'Shopin1901'}, @se)
   end
