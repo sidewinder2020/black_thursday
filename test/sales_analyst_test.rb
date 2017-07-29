@@ -65,8 +65,7 @@ class SalesAnalystTest < Minitest::Test
 
   def test_retrieve_bottom_merchants_by_invoice_id
     assert_equal 0, @sa.bottom_merchants_by_invoice_count.count
-    # assert_instance_of Merchant, @sa.bottom_merchants_by_invoice_count[0]
-    #this seems to be failing due to our test data... or something...
+    assert_equal [], @sa.bottom_merchants_by_invoice_count
   end
 
   def test_retrieve_top_days_of_the_week_by_invoice
