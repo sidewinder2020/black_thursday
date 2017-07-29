@@ -25,4 +25,19 @@ class InvoiceItemTest < Minitest::Test
     assert_equal 38, @ivitr.all.count
   end
 
+  def test_find_invoice_by_invoice_id
+    assert_instance_of InvoiceItem, @ivitr.find_by_id(5)
+    assert_nil @ivitr.find_by_id(69)
+  end
+
+  def test_find_all_by_item_id
+    assert_equal 1, @ivitr.find_all_by_item_id(263519844).count
+    assert_equal [], @ivitr.find_all_by_item_id(666420)
+  end
+
+  def test_find_all_by_invoice_id
+    assert_equal 8, @ivitr.find_all_by_invoice_id(1).count
+    assert_equal [], @ivitr.find_all_by_invoice_id(6666666666666)
+  end
+
 end
