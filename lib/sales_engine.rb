@@ -68,4 +68,8 @@ class SalesEngine
     @merchants.find_by_id(merchant_id)
   end
 
+  def average_invoices_per_merchant
+    @invoices.average_invoices_per_merchant
+  end
+
 end

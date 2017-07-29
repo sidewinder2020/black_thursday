@@ -79,6 +79,12 @@ class SalesAnalyst
       golden_array
   end
 
-  # sa.average_invoices_per_merchant # => 10.49
-  # sa.average_invoices_per_merchant_standard_deviation # => 3.29
+  def average_invoices_per_merchant
+    find_avrg_of_array(@se.average_invoices_per_merchant)
+  end
+
+  def average_invoices_per_merchant_standard_deviation
+    find_standard_deviation(@se.average_invoices_per_merchant)
+  end
+
 end
