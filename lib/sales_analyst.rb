@@ -87,4 +87,48 @@ class SalesAnalyst
     find_standard_deviation(@se.average_invoices_per_merchant)
   end
 
+  def top_merchants_by_invoice_count
+    top_merchant_object_array = []
+    top_merchants_array = get_top_merchants_array_by_invoice
+    top_merchants_array.each do |merchant_id|
+      top_merchant_object_array << @se.get_merchant_by_id(merchant_id)
+    end
+    top_merchant_object_array
+  end
+
+  def get_top_merchants_array_by_invoice
+    top_merchants_array = []
+    top_merchants_hash = @se.get_count_by_merchant_id
+    mean = average_invoices_per_merchant
+    standard_deviation = average_invoices_per_merchant_standard_deviation * 2
+    top_merchants_hash.each do |key,value|
+      if value > standard_deviation + mean
+        top_merchants_array << key
+      end
+    end
+    top_merchants_array
+  end
+
+  def get_bottom_merchants_array_by_invoice_count
+    bottom_merchants_array = []
+    bottom_merchants_hash = @se.get_count_by_merchant_id
+    mean = average_invoices_per_merchant
+    standard_deviation = average_invoices_per_merchant_standard_deviation * 2
+    bottom_merchants_hash.each do |key,value|
+      if value < standard_deviation + mean
+        bottom_merchants_array << key
+      end
+    end
+    bottom_merchants_array
+  end
+
+  def bottom_merchants_by_invoice_count
+    bottom_merchant_object_array = []
+    bottom_merchants_array = get_bottom_merchants_array_by_invoice_count
+    bottom_merchants_array.each do |merchant_id|
+      bottom_merchant_object_array << @se.get_merchant_by_id(merchant_id)
+    end
+    bottom_merchant_object_array
+  end
+
 end

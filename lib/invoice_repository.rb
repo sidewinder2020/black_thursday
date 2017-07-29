@@ -58,12 +58,17 @@ attr_reader :invoices
     end
   end
 
-  def average_invoices_per_merchant
+  def get_count_by_merchant_id
     merchant_ids = find_all_invoice_merchant_id
     counts = Hash.new(0)
-    merchant_ids.each do |merchant_ids|
-      counts[merchant_ids] += 1
+    merchant_ids.each do |merchant_id|
+      counts[merchant_id] += 1
     end
+    counts
+  end
+
+  def average_invoices_per_merchant
+    counts = get_count_by_merchant_id
     merchant_id_count_array = []
     counts.each_value do |number|
       merchant_id_count_array << number

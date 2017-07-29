@@ -2,6 +2,7 @@ require './lib/sales_engine'
 require './lib/item_repository'
 require './lib/merchant_repository'
 require './lib/sales_analyst'
+require './lib/merchant'
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'pry'
@@ -55,5 +56,15 @@ class SalesAnalystTest < Minitest::Test
 
   def test_average_invoices_per_merchant_standard_deviation
     assert_equal 3.26, @sa.average_items_per_merchant_standard_deviation
+  end
+
+  def test_retrieve_top_merchants_by_invoice_id
+    assert_equal 2, @sa.top_merchants_by_invoice_count.count
+    assert_instance_of Merchant, @sa.top_merchants_by_invoice_count[0]
+  end
+
+  def test_retrieve_bottom_merchants_by_invoice_id
+    assert_equal 25, @sa.bottom_merchants_by_invoice_count.count
+    assert_instance_of Merchant, @sa.bottom_merchants_by_invoice_count[0]
   end
 end

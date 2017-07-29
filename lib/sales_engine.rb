@@ -72,4 +72,8 @@ class SalesEngine
     @invoices.average_invoices_per_merchant
   end
 
+  def get_count_by_merchant_id
+    @invoices.get_count_by_merchant_id
+  end
+
 end
