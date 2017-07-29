@@ -44,6 +44,10 @@ class SalesEngine
     @merchants.all_ids
   end
 
+  def all_invoices_count
+    @invoices.all.count
+  end
+
   def get_merchants_total_inventory
     @merchants.get_total_inventory
   end
@@ -84,4 +88,7 @@ class SalesEngine
     @invoices.get_invoice_count_by_day_of_week
   end
 
+  def number_of_invoices_by_status
+    @invoices.number_of_invoices_by_status
+  end
 end

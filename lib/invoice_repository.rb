@@ -99,4 +99,12 @@ attr_reader :invoices
     end
   end
 
+  def number_of_invoices_by_status
+    status_hash = Hash.new
+    status_hash[:pending] = find_all_by_status("pending").count
+    status_hash[:shipped] = find_all_by_status("shipped").count
+    status_hash[:returned] = find_all_by_status("returned").count
+    status_hash
+  end
+
 end

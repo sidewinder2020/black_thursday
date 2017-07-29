@@ -161,4 +161,9 @@ class SalesAnalyst
     find_standard_deviation(@se.get_number_of_invoices_by_day)
   end
 
+  def invoice_status(status)
+    ((@se.number_of_invoices_by_status[status].to_f /
+    @se.all_invoices_count) * 100).round(2)
+  end
+
 end
