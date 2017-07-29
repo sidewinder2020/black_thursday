@@ -20,7 +20,7 @@ module SaMerchantAnalysis
     item_prices = @se.get_item_prices_by_merchant_id(merchant_id)
     find_avrg_of_array(item_prices)
   end
-  
+
   def average_average_price_per_merchant(avrg_avrg_array = [])
     @se.all_merchant_ids.each do |merchant|
       avrg_avrg_array << average_item_price_for_merchant(merchant)
