@@ -1,3 +1,5 @@
+require_relative 'invoice_item'
+
 class InvoiceItemRepository
   attr_reader :invoice_items
 
@@ -16,6 +18,9 @@ class InvoiceItemRepository
 
   def all
     @invoice_items
+  end
+
+  def find_by_id
   end
 # find_by_id - returns either nil or an instance of InvoiceItem with a matching ID
 # find_all_by_item_id - returns either [] or one or more matches which have a matching item ID

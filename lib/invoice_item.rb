@@ -11,7 +11,6 @@ class InvoiceItem
 
   def initialize(invoice_item_hash, ivitr)
     @ivitr = ivitr
-    @invoice_item_hash = invoice_item_hash
     @id = invoice_item_hash[:id]
     @item_id = invoice_item_hash[:item_id]
     @invoice_id = invoice_item_hash[:invoice_id]
