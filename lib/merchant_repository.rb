@@ -92,6 +92,10 @@ class MerchantRepository
     @se.find_all_by_merchant_id(merchant_id)
   end
 
+  def get_all_invoices_by_merchant_id(id)
+    @se.get_all_invoices_by_merchant_id(id)
+  end
+
   def inspect
     "#<#{self.class} #{@merchants.size} rows>"
   end

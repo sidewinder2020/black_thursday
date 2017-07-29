@@ -18,4 +18,8 @@ class Merchant
     @mr.find_all_by_merchant_id(id)
   end
 
+  def invoices
+    @mr.get_all_invoices_by_merchant_id(id)
+  end
+
 end

@@ -7,6 +7,10 @@ module SeInvoicesMethods
       @invoices.average_invoices_per_merchant
     end
 
+    def get_all_invoices_by_merchant_id(id)
+      @invoices.get_all_invoices_by_merchant_id(id)
+    end
+
     def get_count_by_merchant_id
       @invoices.get_count_by_merchant_id
     end

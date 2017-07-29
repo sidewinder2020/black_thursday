@@ -1,4 +1,5 @@
 require_relative 'invoice'
+require 'pry'
 
 class InvoiceRepository
 
@@ -111,8 +112,19 @@ attr_reader :invoices
     status_hash
   end
 
+  def get_all_invoices_by_merchant_id(merchant_id)
+    new_array = []
+    @invoices.each do |invoice|
+      if invoice.merchant_id == merchant_id
+        new_array << invoice
+      end
+    end
+    new_array
+  end
+
   def inspect
     "#<#{self.class} #{@invoices.size} rows>"
   end
+
 
 end
