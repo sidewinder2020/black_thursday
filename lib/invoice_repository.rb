@@ -107,4 +107,8 @@ attr_reader :invoices
     status_hash
   end
 
+  def inspect
+    "#<#{self.class} #{@invoices.size} rows>"
+  end
+
 end

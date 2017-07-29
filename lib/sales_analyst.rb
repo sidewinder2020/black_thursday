@@ -1,4 +1,4 @@
-require_relative '../lib/sales_engine'
+require_relative 'sales_engine'
 require 'bigdecimal'
 require 'date'
 require 'pry'
@@ -117,7 +117,7 @@ class SalesAnalyst
     mean = average_invoices_per_merchant
     standard_deviation = average_invoices_per_merchant_standard_deviation * 2
     bottom_merchants_hash.each do |key,value|
-      if value < standard_deviation + mean
+      if value < mean - standard_deviation
         bottom_merchants_array << key
       end
     end
