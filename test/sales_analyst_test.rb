@@ -64,7 +64,7 @@ class SalesAnalystTest < Minitest::Test
   end
 
   def test_retrieve_bottom_merchants_by_invoice_id
-    assert_equal 25, @sa.bottom_merchants_by_invoice_count.count
+    assert_equal 0, @sa.bottom_merchants_by_invoice_count.count
     assert_instance_of Merchant, @sa.bottom_merchants_by_invoice_count[0]
   end
 
