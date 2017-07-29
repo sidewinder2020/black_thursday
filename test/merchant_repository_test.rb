@@ -10,8 +10,8 @@ class MerchantRepositoryTest < Minitest::Test
 
   def setup
     @se = SalesEngine.from_csv({
-        :items     => "./data/items.csv",
         :merchants => "./data/merchants.csv",
+        :items     => "./data/items.csv"
         })
     @mr = MerchantRepository.new("./data/merchants.csv", @se)
   end
@@ -34,7 +34,7 @@ class MerchantRepositoryTest < Minitest::Test
   def test_find_by_id_returns_specified_merchant_instance
     merchant = @mr.find_by_id(12334105)
     nil_merchant = @mr.find_by_id(1231412543534543)
-    
+
     assert_equal 'Shopin1901', merchant.name
     assert_nil nil_merchant
   end

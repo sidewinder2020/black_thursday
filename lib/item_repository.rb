@@ -80,10 +80,10 @@ class ItemRepository
   end
 
   def find_merchant_id_by_item_id(item_id)
-    item = @items.find do |item|
+    found_item = @items.find do |item|
       item.id == item_id
     end
-    item.merchant_id
+    found_item.merchant_id
   end
 
   def return_merchant_by_item_id(item_id)
