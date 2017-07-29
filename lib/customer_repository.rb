@@ -19,3 +19,4 @@ class CustomerRepository
   def all
     @customers
   end
+end
