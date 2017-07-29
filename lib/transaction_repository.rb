@@ -20,3 +20,6 @@ class TransactionRepository
     @transactions
   end
 end
+#
+# The TransactionRepository is responsible for holding and searching our Transaction instances. It offers the following methods:
+#
