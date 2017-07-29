@@ -53,4 +53,10 @@ class SalesEngine
       InvoiceRepository.new(csv_hash[:invoices], self)
     end
   end
+
+  def transaction_repository(csv_hash)
+    if csv_hash[:transactions]
+      TransactionRepository.new(csv_hash[:transaction])
+    end
+  end
 end
