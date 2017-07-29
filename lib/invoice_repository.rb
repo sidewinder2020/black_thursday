@@ -76,4 +76,27 @@ attr_reader :invoices
     merchant_id_count_array
   end
 
+  def get_invoice_count_by_day_of_week
+    weekday_counts = find_all_invoice_days_of_the_week
+    counts = Hash.new(0)
+    weekday_counts.each do |weekday|
+      counts[weekday] += 1
+    end
+    counts
+  end
+
+  def get_number_of_invoices_by_day
+    counts_by_day = []
+    get_invoice_count_by_day_of_week.each_value do |day|
+      counts_by_day << day
+    end
+    counts_by_day
+  end
+
+  def find_all_invoice_days_of_the_week
+    @invoices.map do |invoice|
+      invoice.created_at.wday
+    end
+  end
+
 end

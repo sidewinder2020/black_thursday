@@ -67,4 +67,10 @@ class SalesAnalystTest < Minitest::Test
     assert_equal 25, @sa.bottom_merchants_by_invoice_count.count
     assert_instance_of Merchant, @sa.bottom_merchants_by_invoice_count[0]
   end
+
+  def test_retrieve_top_days_of_the_week_by_invoice
+    assert_equal 1, @sa.top_days_by_invoice_count.count
+    assert_equal "Friday" , @sa.top_days_by_invoice_count[0]
+
+  end
 end

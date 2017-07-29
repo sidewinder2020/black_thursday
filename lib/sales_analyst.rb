@@ -1,5 +1,7 @@
 require_relative '../lib/sales_engine'
 require 'bigdecimal'
+require 'date'
+require 'pry'
 
 class SalesAnalyst
 
@@ -129,6 +131,34 @@ class SalesAnalyst
       bottom_merchant_object_array << @se.get_merchant_by_id(merchant_id)
     end
     bottom_merchant_object_array
+  end
+
+  def get_top_days_by_invoice_count
+    top_days_of_the_week_array = []
+    top_days_of_the_week_hash = @se.get_number_of_invoices_by_day_of_the_week
+    mean = average_invoices_per_day
+    standard_deviation =
+    average_invoices_per_day_of_the_week_standard_deviation
+    top_days_of_the_week_hash.each do |key,value|
+      if value > standard_deviation + mean
+        top_days_of_the_week_array << key
+      end
+    end
+    top_days_of_the_week_array
+  end
+
+  def top_days_by_invoice_count
+    get_top_days_by_invoice_count.map do |weekday|
+      Date::DAYNAMES[weekday]
+    end
+  end
+
+  def average_invoices_per_day
+    find_avrg_of_array(@se.get_number_of_invoices_by_day)
+  end
+
+  def average_invoices_per_day_of_the_week_standard_deviation
+    find_standard_deviation(@se.get_number_of_invoices_by_day)
   end
 
 end
