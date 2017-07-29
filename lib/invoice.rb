@@ -18,4 +18,7 @@ attr_reader :id,
     @inr = inr
   end
 
+  def merchant
+    @inr.find_merchant_by_merchant_id(@merchant_id)
+  end
 end

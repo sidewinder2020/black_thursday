@@ -40,6 +40,10 @@ attr_reader :invoices
     end
   end
 
+  def find_merchant_by_merchant_id(merchant_id)
+    @se.get_merchant_by_id(merchant_id)
+  end
+
   def find_all_by_merchant_id(merchant_id)
     @invoices.find_all do |invoice|
       invoice.merchant_id == merchant_id
@@ -101,9 +105,9 @@ attr_reader :invoices
 
   def number_of_invoices_by_status
     status_hash = Hash.new
-    status_hash[:pending] = find_all_by_status("pending").count
-    status_hash[:shipped] = find_all_by_status("shipped").count
-    status_hash[:returned] = find_all_by_status("returned").count
+    status_hash[:pending] = find_all_by_status(:pending).count
+    status_hash[:shipped] = find_all_by_status(:shipped).count
+    status_hash[:returned] = find_all_by_status(:returned).count
     status_hash
   end
 
