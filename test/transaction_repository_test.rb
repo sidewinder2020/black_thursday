@@ -9,19 +9,28 @@ class TransactionRepositoryTest < Minitest::Test
 
   def setup
     @se = SalesEngine.from_csv({
-    :invoices => "./test/test_data/transactions_short.csv"
+    :transactions => "./test/test_data/transactions_short.csv"
     })
-    @tr = TransactionRepository.new("./data/merchants.csv", @se)
+    @tr = TransactionRepository.new("./test/test_data/transactions_short.csv", @se)
   end
 
   def test_all_known_transactions
     assert_equal 50, @tr.all.count
   end
+
+  def test_find_by_id
+    assert_instance_of Transaction, @tr.find_by_id(5)
+  end
+
+  def test_find_all_by_invoice_id
+    assert_equal 1, @tr.find_all_by_invoice_id(2179).count
+  end
+
+  def test_all_by_credit_card_number
+    assert_equal 1, @tr.find_all_by_credit_card_number(4257133712179878).count
+  end
+
+  def test_find_all_by_result
+    assert_equal 40, @tr.find_all_by_result('success').count
+  end
 end
-
-
-# all - returns an array of all known Transaction instances
-# find_by_id - returns either nil or an instance of Transaction with a matching ID
-# find_all_by_invoice_id - returns either [] or one or morematches which have a matching invoice ID
-# find_all_by_credit_card_number - returns either [] or one or more matches which have a matching credit card number
-# find_all_by_result - returns either [] or one or more matches which have a matching status
