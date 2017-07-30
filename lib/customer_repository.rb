@@ -30,7 +30,7 @@ class CustomerRepository
 
   def find_all_by_first_name(first_name_fragment, found_customers = [])
     @customers.each do |customer|
-      if customer.first_name.include?(first_name_fragment)
+      if customer.first_name.upcase.include?(first_name_fragment.upcase)
         found_customers << customer
       end
     end
@@ -39,7 +39,7 @@ class CustomerRepository
 
   def find_all_by_last_name(last_name_fragment, found_customers = [])
     @customers.map do |customer|
-      if customer.last_name.include?(last_name_fragment)
+      if customer.last_name.upcase.include?(last_name_fragment.upcase)
         found_customers << customer
       end
     end

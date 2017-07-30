@@ -29,12 +29,12 @@ class CustomerRepositoryTest < Minitest::Test
   end
 
   def test_find_all_customers_by_first_name
-    assert_equal 1, @customers.find_all_by_first_name("Jo").count
+    assert_equal 2, @customers.find_all_by_first_name("Jo").count
     assert_equal [], @customers.find_all_by_first_name("Cornholio")
   end
 
-  def test_find_all_customers_by_first_name
-    assert_equal 1, @customers.find_all_by_last_name("On").count
+  def test_find_all_customers_by_last_name
+    assert_equal 8, @customers.find_all_by_last_name("On").count
     assert_equal [], @customers.find_all_by_last_name("Cornholio")
   end
 end

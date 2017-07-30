@@ -43,6 +43,10 @@ class TransactionRepository
       transaction.result == result
     end
   end
+
+  def inspect
+    "#<#{self.class} #{@transactions.size} rows>"
+  end
 end
 
 # all - returns an array of all known Transaction instances

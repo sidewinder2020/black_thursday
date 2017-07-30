@@ -21,4 +21,9 @@ attr_reader :id,
   def merchant
     @inr.find_merchant_by_merchant_id(@merchant_id)
   end
+
+  #   invoice = se.invoices.find_by_id(20)
+  # invoice.items # => [item, item, item]
+  # invoice.transactions # => [transaction, transaction]
+  # invoice.customer # => customer
 end

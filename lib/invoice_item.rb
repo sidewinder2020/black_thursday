@@ -10,15 +10,19 @@ class InvoiceItem
               :updated_at
 
   def initialize(invoice_item_hash, ivitr)
+    @invoice_item_hash = invoice_item_hash
     @ivitr = ivitr
     @id = invoice_item_hash[:id]
     @item_id = invoice_item_hash[:item_id]
     @invoice_id = invoice_item_hash[:invoice_id]
     @quantity = invoice_item_hash[:quantity]
-    @unit_price = invoice_item_hash[:unit_price]
+    @unit_price = BigDecimal.new(invoice_item_hash[:unit_price].to_s.insert(-3, "."))
     @created_at = Time.parse(invoice_item_hash[:created_at])
     @updated_at = Time.parse(invoice_item_hash[:updated_at])
   end
 
-# unit_price_to_dollars - returns the price of the invoice item in dollars formatted as a Float
+  def unit_price_to_dollars
+    (invoice_item_hash[:unit_price] / 100).to_f
+  end
+
 end
