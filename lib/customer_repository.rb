@@ -38,12 +38,16 @@ class CustomerRepository
   end
 
   def find_all_by_last_name(last_name_fragment, found_customers = [])
-    @customers.each do |customer|
+    @customers.map do |customer|
       if customer.last_name.include?(last_name_fragment)
         found_customers << customer
       end
     end
     found_customers
+  end
+
+  def inspect
+    "#<#{self.class} #{@customers.size} rows>"
   end
 
 end
