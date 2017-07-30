@@ -15,7 +15,7 @@ class TransactionRepositoryTest < Minitest::Test
   end
 
   def test_all_known_transactions
-    assert_equal 50, @tr.all.count
+    assert_equal 51, @tr.all.count
   end
 
   def test_find_by_id
@@ -31,6 +31,6 @@ class TransactionRepositoryTest < Minitest::Test
   end
 
   def test_find_all_by_result
-    assert_equal 40, @tr.find_all_by_result('success').count
+    assert_equal 41, @tr.find_all_by_result('success').count
   end
 end

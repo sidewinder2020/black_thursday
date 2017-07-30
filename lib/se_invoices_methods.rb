@@ -26,4 +26,8 @@ module SeInvoicesMethods
   def number_of_invoices_by_status
     @invoices.number_of_invoices_by_status
   end
+
+  def find_by_id(invoice_id)
+    @invoices.find_by_id(invoice_id)
+  end
 end

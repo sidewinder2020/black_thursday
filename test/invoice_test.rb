@@ -12,6 +12,9 @@ class InvoiceTest < Minitest::Test
     @se = SalesEngine.from_csv({
                                 :invoices => "./test/test_data/invoices_short.csv",
                                 :merchants => "./data/merchants.csv",
+                                :items => "./data/items.csv",
+                                :invoice_items => "./test/test_data/invoice_items_short.csv",
+                                :transactions => "./test/test_data/transactions_short.csv",
                                 })
     @inr = InvoiceRepository.new("./test/test_data/invoices_short.csv", @se)
     @invoice = Invoice.new({
@@ -39,6 +42,14 @@ class InvoiceTest < Minitest::Test
 
   def test_find_merchant_by_merchant_id
     assert_instance_of Merchant, @invoice.merchant
+  end
+
+  def test_invoice_items_returns_array_of_items_with_matching_invoice_id
+    assert_equal 7, @invoice.items.count
+  end
+
+  def test_invoice_retrieves_transactions
+    assert_equal 1, @invoice.transactions.count
   end
 
 end

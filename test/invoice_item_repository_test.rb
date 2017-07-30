@@ -6,7 +6,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require 'pry'
 
-class InvoiceItemTest < Minitest::Test
+class InvoiceItemRepositoryTest < Minitest::Test
 
   def setup
     @se = SalesEngine.from_csv({

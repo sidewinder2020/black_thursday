@@ -122,6 +122,14 @@ attr_reader :invoices
     new_array
   end
 
+  def find_all_items_by_invoice_id(invoice_id)
+    @se.find_all_items_by_invoice_id(invoice_id)
+  end
+
+  def find_all_transactions_by_invoice_id(invoice_id)
+    @se.find_all_transactions_by_invoice_id(invoice_id)
+  end
+
   def inspect
     "#<#{self.class} #{@invoices.size} rows>"
   end
