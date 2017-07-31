@@ -11,6 +11,7 @@ class CustomerTest < Minitest::Test
   def setup
     @se = SalesEngine.from_csv({
                                 :customers => "./test/test_data/customers_short.csv",
+                                :invoices => "./test/test_data/invoices_short.csv"
                                 })
     @customers = CustomerRepository.new("./test/test_data/customers_short.csv", @se)
   end
@@ -27,4 +28,7 @@ class CustomerTest < Minitest::Test
     assert_equal Time.parse("2012-03-27 14:54:09 UTC"),@customers.all.first.updated_at
   end
 
+  def test_is_can_get_invoices
+    assert_instance_of Invoice, @customers.all.first.invoices.first
+  end
 end

@@ -16,4 +16,8 @@ attr_reader :id,
     @updated_at = Time.parse(customer_hash[:updated_at])
   end
 
+  def invoices
+    @customers.get_all_invoices_by_customer_id(@id)
+  end
+
 end

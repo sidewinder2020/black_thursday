@@ -11,6 +11,10 @@ module SeInvoicesMethods
     @invoices.get_all_invoices_by_merchant_id(id)
   end
 
+  def get_all_invoices_by_customer_id(id)
+    @invoices.find_all_by_customer_id(id)
+  end
+
   def get_count_by_merchant_id
     @invoices.get_count_by_merchant_id
   end

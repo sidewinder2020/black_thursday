@@ -46,6 +46,10 @@ class CustomerRepository
     found_customers
   end
 
+  def get_all_invoices_by_customer_id(id)
+    @se.get_all_invoices_by_customer_id(id)
+  end
+
   def inspect
     "#<#{self.class} #{@customers.size} rows>"
   end
