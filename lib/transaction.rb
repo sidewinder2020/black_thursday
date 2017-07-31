@@ -20,4 +20,13 @@ attr_reader :id,
     @updated_at = Time.parse(transaction_hash[:updated_at])
     @tr = tr
   end
+
+  def invoice
+    @tr.find_invoice_by_id(@invoice_id)
+  end
+
 end
+
+#
+# transaction = se.transactions.find_by_id(40)
+# transaction.invoice # => invoice

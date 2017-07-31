@@ -44,6 +44,10 @@ class TransactionRepository
     end
   end
 
+  def find_invoice_by_id(invoice_id)
+    @se.find_by_id(invoice_id)
+  end
+
   def inspect
     "#<#{self.class} #{@transactions.size} rows>"
   end

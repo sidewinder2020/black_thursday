@@ -1,6 +1,7 @@
 require './lib/transaction'
 require './lib/transaction_repository'
 require './lib/sales_engine'
+require './lib/invoice'
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'time'
@@ -9,7 +10,8 @@ class TransactionTest < Minitest::Test
 
   def setup
     @se = SalesEngine.from_csv({
-    :transactions => "./test/test_data/transactions_short.csv"
+    :transactions => "./test/test_data/transactions_short.csv",
+    :invoices => "./test/test_data/invoices_short.csv"
     })
     @tr = TransactionRepository.new("./test/test_data/transactions_short.csv", @se)
     @transaction = Transaction.new({:id => 1,
@@ -31,5 +33,7 @@ class TransactionTest < Minitest::Test
     assert_equal Time.parse('2012-02-26 20:56:56 UTC'), @transaction.updated_at
   end
 
-
+  def test_it_can_retrieve_invoice
+    assert_instance_of Invoice, @transaction.invoice
+  end
 end
