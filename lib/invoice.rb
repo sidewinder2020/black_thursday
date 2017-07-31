@@ -34,4 +34,26 @@ attr_reader :id,
     @inr.get_customer_by_customer_id(@customer_id)
   end
 
+  def is_paid_in_full?
+    if transactions.count == 0
+      return false
+    else
+      transactions.all? do |transaction|
+        transaction.result == "success"
+      end
+    end
+  end
+
+  def invoice_items
+    @inr.get_invoice_items_by_invoice_id(@id)
+  end
+
+  def total
+    sum = 0
+    invoice_items.each do |invoice_item|
+      sum += invoice_item.total_invoice_price
+    end
+    sum.round(2)
+  end
+
 end

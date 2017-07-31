@@ -38,6 +38,6 @@ class MerchantTest < Minitest::Test
   end
 
   def test_it_can_find_customers_who_have_purchases_from_it
-    assert_instance_of Customer, @merchant.customers.first
+    assert_equal 3, @merchant.customers.count
   end
 end

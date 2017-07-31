@@ -1,6 +1,9 @@
 require './lib/invoice'
 require './lib/sales_engine'
 require './lib/invoice_repository'
+require './lib/invoice_item_repository'
+require './lib/invoice_item'
+require 'bigdecimal'
 require 'time'
 require 'minitest/autorun'
 require 'minitest/pride'
@@ -55,5 +58,17 @@ class InvoiceTest < Minitest::Test
 
   def test_invoice_retrieves_customers
     assert_instance_of Customer, @invoice.customer
+  end
+
+  def test_invoice_items_returns_array_of_invoice_items_with_matching_invoice_id
+    assert_equal 7, @invoice.invoice_items.count
+  end
+
+  def test_is_paid_in_full_returns_true
+    assert @invoice.is_paid_in_full?
+  end
+
+  def test_can_grab_total_cost_of_items
+    assert_instance_of BigDecimal, @invoice.total
   end
 end

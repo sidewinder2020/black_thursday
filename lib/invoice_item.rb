@@ -22,7 +22,11 @@ class InvoiceItem
   end
 
   def unit_price_to_dollars
-    (invoice_item_hash[:unit_price] / 100).to_f
+    (@invoice_item_hash[:unit_price] / 100).to_f
+  end
+
+  def total_invoice_price
+    @unit_price * @quantity
   end
 
 end

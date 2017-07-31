@@ -20,7 +20,7 @@ class InvoiceRepositoryTest < Minitest::Test
   end
 
   def test_all_returns_all_invoices_in_the_correct_format
-    assert_equal 30, @inr.all.count
+    assert_equal 32, @inr.all.count
   end
 
   def test_find_by_id

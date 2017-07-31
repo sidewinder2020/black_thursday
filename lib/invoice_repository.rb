@@ -138,5 +138,9 @@ attr_reader :invoices
     "#<#{self.class} #{@invoices.size} rows>"
   end
 
+  def get_invoice_items_by_invoice_id(invoice_id)
+    @se.get_invoice_items_by_invoice_id(invoice_id)
+  end
+
 
 end

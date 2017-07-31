@@ -1,3 +1,5 @@
+require 'pry'
+
 class Merchant
   attr_reader :merchant_info
 

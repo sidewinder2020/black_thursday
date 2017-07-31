@@ -88,4 +88,8 @@ class SalesEngine
     @transactions.find_all_by_invoice_id(invoice_id)
   end
 
+  def get_invoice_items_by_invoice_id(invoice_id)
+    @invoice_items.find_all_by_invoice_id(invoice_id)
+  end
+
 end
