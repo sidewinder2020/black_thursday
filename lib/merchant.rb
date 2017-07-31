@@ -22,4 +22,12 @@ class Merchant
     @mr.get_all_invoices_by_merchant_id(id)
   end
 
+  def customer
+    invoices.map do |invoice|
+      invoice.customer
+    end
+  end
 end
+
+# And if we started with a merchant we could find the
+# customers who’ve purchased one or more items at their store:

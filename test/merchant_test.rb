@@ -1,4 +1,5 @@
 require './lib/merchant'
+require './lib/sales_engine'
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'pry'
@@ -10,7 +11,8 @@ class MerchantTest < Minitest::Test
     @se = SalesEngine.from_csv({
     :merchants => "./data/merchants.csv",
     :items     => "./data/items.csv",
-    :invoices => "./test/test_data/invoices_short.csv"
+    :invoices => "./test/test_data/invoices_short.csv",
+    :customers => "./test/test_data/customers_short.csv"
     })
     @merchant = Merchant.new({:id => 12334389, :name => 'WoodleyShop'}, @se)
   end
@@ -28,11 +30,14 @@ class MerchantTest < Minitest::Test
   end
 
   def test_it_can_find_items_by_merchant_id
-    assert_instance_of Item, @merchant.items[0]
+    assert_instance_of Item, @merchant.items.first
   end
 
   def test_it_can_find_invoices_by_merchant
-    assert_instance_of Invoice, @merchant.invoices[0]
+    assert_instance_of Invoice, @merchant.invoices.first
   end
 
+  def test_it_can_find_customers_who_have_purchases_from_it
+    assert_instance_of Customer, @merchant.customer.first
+  end
 end
