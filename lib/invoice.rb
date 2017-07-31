@@ -29,6 +29,10 @@ attr_reader :id,
   def transactions
     @inr.find_all_transactions_by_invoice_id(@id)
   end
+
+  def customer
+    @inr.get_customer_by_customer_id(@customer_id)
+  end
   #
   # def customer
   # end

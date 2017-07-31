@@ -15,6 +15,7 @@ class InvoiceTest < Minitest::Test
                                 :items => "./data/items.csv",
                                 :invoice_items => "./test/test_data/invoice_items_short.csv",
                                 :transactions => "./test/test_data/transactions_short.csv",
+                                :customers => "./test/test_data/customers_short.csv"
                                 })
     @inr = InvoiceRepository.new("./test/test_data/invoices_short.csv", @se)
     @invoice = Invoice.new({
@@ -52,4 +53,7 @@ class InvoiceTest < Minitest::Test
     assert_equal 1, @invoice.transactions.count
   end
 
+  def test_invoice_retrieves_customers
+    assert_instance_of Customer, @invoice.customer
+  end
 end
