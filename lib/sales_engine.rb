@@ -23,7 +23,8 @@ class SalesEngine
               :merchants,
               :invoices,
               :invoice_items,
-              :customers
+              :customers,
+              :transactions
 
   def self.from_csv(csv_hash)
     SalesEngine.new(csv_hash)
