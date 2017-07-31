@@ -22,7 +22,7 @@ class Merchant
     @mr.get_all_invoices_by_merchant_id(id)
   end
 
-  def customer
+  def customers
     invoices.map do |invoice|
       invoice.customer
     end
