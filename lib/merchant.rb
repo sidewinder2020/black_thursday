@@ -25,11 +25,11 @@ class Merchant
   end
 
   def customers
-    invoices.map do |invoice|
-      invoice.customer
+    customer_list = []
+    invoices.each do |invoice|
+      customer_list << invoice.customer
     end
+    customer_list.uniq
   end
-end
 
-# And if we started with a merchant we could find the
-# customers who’ve purchased one or more items at their store:
+end
