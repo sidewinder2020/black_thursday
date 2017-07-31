@@ -1,6 +1,9 @@
 require './lib/customer'
 require './lib/sales_engine'
 require './lib/customer_repository'
+require './lib/transaction'
+require './lib/invoice'
+require './lib/invoice_item'
 require 'time'
 require 'minitest/autorun'
 require 'minitest/pride'
@@ -12,7 +15,9 @@ class CustomerTest < Minitest::Test
     @se = SalesEngine.from_csv({
                                 :customers => "./test/test_data/customers_short.csv",
                                 :invoices => "./test/test_data/invoices_short.csv",
-                                :merchants => "./data/merchants.csv"
+                                :merchants => "./data/merchants.csv",
+                                :transactions => "./test/test_data/transactions_short.csv",
+                                :invoice_items => "./test/test_data/invoice_items_short.csv",
                                 })
     @customers = CustomerRepository.new("./test/test_data/customers_short.csv", @se)
   end
@@ -35,5 +40,9 @@ class CustomerTest < Minitest::Test
 
   def test_it_can_get_merchants
     assert_instance_of Merchant, @customers.all.first.merchants.first
+  end
+
+  def test_get_total_price
+    assert_equal 25842, @customers.all.first.get_total_spent
   end
 end

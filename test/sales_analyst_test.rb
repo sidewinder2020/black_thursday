@@ -15,6 +15,9 @@ class SalesAnalystTest < Minitest::Test
     :items     => "./data/items.csv",
     :merchants => "./data/merchants.csv",
     :invoices => "./test/test_data/invoices_short.csv",
+    :customers => "./test/test_data/customers_short.csv",
+    :invoice_items => "./test/test_data/invoice_items_short.csv",
+    :transactions => "./test/test_data/transactions_short.csv"
     })
     @sa = SalesAnalyst.new(@se)
   end
@@ -77,6 +80,12 @@ class SalesAnalystTest < Minitest::Test
     assert_equal 31.25, @sa.invoice_status(:pending)
     assert_equal 62.5, @sa.invoice_status(:shipped)
     assert_equal 6.25, @sa.invoice_status(:returned)
+  end
+
+  def test_top_buyers_returns_top_buyers
+    assert_equal 5, @sa.top_buyers(5).count
+    assert_instance_of Customer, @sa.top_buyers(5)[0]
+    assert_equal 20, @sa.top_buyers.count
   end
 
 end

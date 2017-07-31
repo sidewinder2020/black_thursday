@@ -29,4 +29,12 @@ class SalesAnalyst
     (deviant_array.reduce(:+)) / ((deviant_array.length - 1).to_f)
     (Math.sqrt(deviant_number)).round(2)
   end
+
+  def top_buyers(number = 20)
+    all_customers = @se.all_customers
+    all_customers.max_by(number) do |customer|
+      customer.get_total_spent
+    end
+  end
+
 end

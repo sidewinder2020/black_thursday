@@ -38,7 +38,7 @@ attr_reader :id,
     if transactions.count == 0
       return false
     else
-      transactions.all? do |transaction|
+      transactions.any? do |transaction|
         transaction.result == "success"
       end
     end

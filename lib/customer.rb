@@ -20,6 +20,15 @@ attr_reader :id,
     @customers.get_all_invoices_by_customer_id(@id)
   end
 
+  def get_total_spent(total_spent = 0)
+    invoices.each do |invoice|
+      if invoice.is_paid_in_full?
+        total_spent += invoice.total
+      end
+    end
+    total_spent.to_i
+  end
+
   def merchants
     invoices.map do |invoice|
       invoice.merchant
