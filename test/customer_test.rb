@@ -11,7 +11,8 @@ class CustomerTest < Minitest::Test
   def setup
     @se = SalesEngine.from_csv({
                                 :customers => "./test/test_data/customers_short.csv",
-                                :invoices => "./test/test_data/invoices_short.csv"
+                                :invoices => "./test/test_data/invoices_short.csv",
+                                :merchants => "./data/merchants.csv"
                                 })
     @customers = CustomerRepository.new("./test/test_data/customers_short.csv", @se)
   end
@@ -30,5 +31,9 @@ class CustomerTest < Minitest::Test
 
   def test_is_can_get_invoices
     assert_instance_of Invoice, @customers.all.first.invoices.first
+  end
+
+  def test_it_can_get_merchants
+    assert_instance_of Merchant, @customers.all.first.merchants.first
   end
 end

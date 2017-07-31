@@ -20,4 +20,9 @@ attr_reader :id,
     @customers.get_all_invoices_by_customer_id(@id)
   end
 
+  def merchants
+    invoices.map do |invoice|
+      invoice.merchant
+    end
+  end
 end
