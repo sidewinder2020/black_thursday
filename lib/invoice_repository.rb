@@ -14,7 +14,7 @@ attr_reader :invoices
   def load_csv(filepath)
     CSV.foreach(filepath, headers: true,
                           header_converters: :symbol,
-                          converters: :all) do |row|
+                          converters: :numeric) do |row|
       @invoices << Invoice.new(row.to_h, self)
     end
   end
