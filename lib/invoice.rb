@@ -33,9 +33,5 @@ attr_reader :id,
   def customer
     @inr.get_customer_by_customer_id(@customer_id)
   end
-  #
-  # def customer
-  # end
-  # invoice.transactions # => [transaction, transaction]
-  # invoice.customer # => customer
+
 end
