@@ -56,4 +56,11 @@ attr_reader :id,
     sum.round(2)
   end
 
+  def quantity_of_items(total_quantity = 0)
+    invoice_items.each do |invoice_item|
+      total_quantity += invoice_item.quantity
+    end
+    total_quantity
+  end
+
 end

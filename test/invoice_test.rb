@@ -71,4 +71,8 @@ class InvoiceTest < Minitest::Test
   def test_can_grab_total_cost_of_items
     assert_instance_of BigDecimal, @invoice.total
   end
+
+  def test_it_can_return_total_quantity_of_items
+    assert_equal 17, @invoice.quantity_of_items
+  end
 end

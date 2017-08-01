@@ -45,4 +45,8 @@ class CustomerTest < Minitest::Test
   def test_get_total_price
     assert_equal 25842, @customers.all.first.get_total_spent
   end
+
+  def test_we_can_get_merchant_id_for_customer
+    assert_equal 9283982374, @customers.all.first.top_merchant_for_customer
+  end
 end
