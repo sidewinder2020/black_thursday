@@ -92,4 +92,9 @@ class SalesAnalystTest < Minitest::Test
     assert_equal 12335938, @sa.top_merchant_for_customer(1)
   end
 
+  def test_find_one_time_buyers
+    assert_instance_of Customer, @sa.one_time_buyers[0]
+    assert_equal 7, @sa.one_time_buyers.count
+  end
+
 end

@@ -44,4 +44,10 @@ class SalesAnalyst
   def top_merchant_for_customer(customer_id)
     find_customer_by_id(customer_id).top_merchant_for_customer
   end
+
+  def one_time_buyers
+    @se.all_customers.find_all do |customer|
+      customer.invoices.count == 1
+    end
+  end
 end
