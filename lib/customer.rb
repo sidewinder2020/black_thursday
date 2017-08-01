@@ -36,21 +36,20 @@ attr_reader :id,
     end
   end
 
-  def top_number_of_items_sold_by_invoice(invoices = @invoices)
-    invoices.max_by do |invoice|
+  def top_number_of_items_sold_by_invoice
+    valid_invoices.max_by do |invoice|
       invoice.quantity_of_items
-    end
-    if invoice.is_paid_in_full?
-      return invoice
-    else
-      top_invoices = invoices
-      top_invoices -= invoice
-      top_number_of_items_sold_by_invoice(top_invoices)
     end
   end
 
   def top_merchant_for_customer
     top_number_of_items_sold_by_invoice.merchant_id
+  end
+
+  def valid_invoices
+    invoices.find_all do |invoice|
+      invoice.is_paid_in_full?
+    end
   end
 
 end

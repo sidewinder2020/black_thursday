@@ -37,4 +37,11 @@ class SalesAnalyst
     end
   end
 
+  def find_customer_by_id(customer_id)
+    @se.find_customer_by_id(customer_id)
+  end
+
+  def top_merchant_for_customer(customer_id)
+    find_customer_by_id(customer_id).top_merchant_for_customer
+  end
 end

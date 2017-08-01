@@ -6,4 +6,5 @@ module SeCustomerMethods
   def all_customers
     @customers.all
   end
+
 end

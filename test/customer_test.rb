@@ -47,6 +47,6 @@ class CustomerTest < Minitest::Test
   end
 
   def test_we_can_get_merchant_id_for_customer
-    assert_equal 9283982374, @customers.all.first.top_merchant_for_customer
+    assert_equal 12335938, @customers.all.first.top_merchant_for_customer
   end
 end
