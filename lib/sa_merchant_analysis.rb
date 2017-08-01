@@ -28,7 +28,7 @@ module SaMerchantAnalysis
     find_avrg_of_array(avrg_avrg_array)
   end
 
-  def find_merchant_by_merchant_id(merchant_id)
-    @se.find_merchant_by_merchant_id(merchant_id)
+  def get_merchant_by_id(merchant_id)
+    @se.get_merchant_by_id(merchant_id)
   end
 end

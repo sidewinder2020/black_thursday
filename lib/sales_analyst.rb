@@ -42,12 +42,52 @@ class SalesAnalyst
   end
 
   def top_merchant_for_customer(customer_id)
-    find_customer_by_id(customer_id).top_merchant_for_customer
+    merchant_id = find_customer_by_id(customer_id).top_merchant_for_customer
+    @se.get_merchant_by_id(merchant_id)
   end
 
-  def one_time_buyers
-    @se.all_customers.find_all do |customer|
-      customer.invoices.count == 1
-    end
+  # def one_time_buyers
+  #   @se.all_customers.select do |customer|
+  #     customer.invoices.count == 1
+  #   end
+  # end
+  #
+  # def one_time_buyers_invoices
+  #   one_time_buyers.map do |customer|
+  #     customer.invoices
+  #   end.flatten
+  # end
+  #
+  # def one_time_buyers_items_items
+  #   item_id_array = []
+  #   one_time_buyers_invoices.each do |invoice|
+  #     invoice.items.each do |item|
+  #       item_id_array << item.id
+  #     end
+  #   end
+  #   item_id_array
+  # end
+  #
+  # def one_time_buyers_item
+  #   binding.pry
+  #   items_count = one_time_buyers_items_items
+  #   counts = Hash.new(0)
+  #   items_count.each do |item|
+  #     counts[item] += 1
+  #   end
+  #   counts
+  # end
+
+  def items_bought_in_year(customer_id, year)
+    customer = @se.find_customer_by_id(customer_id)
+    invoices = customer.find_customer_invoices_by_year(year)
+    item_array = []
+      invoices.each do |invoice|
+        invoice.items.each do |item|
+          item_array << item
+        end
+      end
+      item_array
   end
+
 end

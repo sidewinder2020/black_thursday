@@ -18,6 +18,7 @@ class CustomerTest < Minitest::Test
                                 :merchants => "./data/merchants.csv",
                                 :transactions => "./test/test_data/transactions_short.csv",
                                 :invoice_items => "./test/test_data/invoice_items_short.csv",
+                                :items => "./data/items.csv",
                                 })
     @customers = CustomerRepository.new("./test/test_data/customers_short.csv", @se)
   end
@@ -48,5 +49,13 @@ class CustomerTest < Minitest::Test
 
   def test_we_can_get_merchant_id_for_customer
     assert_equal 12335938, @customers.all.first.top_merchant_for_customer
+  end
+
+  def test_all_purchased_items_returns_items
+    assert_equal 15, @customers.all.first.all_purchased_items.count
+  end
+
+  def test_find_customer_invoices_by_year_does_thing
+    assert_equal 1, @customers.all.first.find_customer_invoices_by_year(2009).count
   end
 end

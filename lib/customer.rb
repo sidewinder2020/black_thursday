@@ -52,4 +52,20 @@ attr_reader :id,
     end
   end
 
+  def all_purchased_items
+    all_items =[]
+    valid_invoices.each do |invoice|
+      invoice.items.each do |item|
+        all_items << item
+      end
+    end
+    all_items
+  end
+
+  def find_customer_invoices_by_year(year)
+    valid_invoices.find_all do |invoice|
+      invoice.created_at.year == year
+    end
+  end
+
 end
