@@ -1,12 +1,22 @@
-email intro 
-name: Murl Heidenreich, amnt owed: $1083.31 
-name: Brendon Armstrong, amnt owed: $1072.65 
-name: Marvin Quigley, amnt owed: $1071.04 
-name: Margot Kautzer, amnt owed: $1047.68 
-name: Junius Connelly, amnt owed: $1019.48 
-name: Pablo Kuhlman, amnt owed: $1015.95 
-name: Ron Luettgen, amnt owed: $1008.09 
-name: Monserrate O'Keefe, amnt owed: $1002.74 
-name: Giovani Fritsch, amnt owed: $998.39 
-name: Austen Wyman, amnt owed: $996.32 
-end of email 
+Dear Mr. Dog, 
+ We here at the Umbrella Corp., I mean Etsy, value our customers. However, while we understand that various circumstances may occur, we are unable to compromise in regards to our revenue stream. 
+ It's for the customers, you see.  If we don't have money to build our mansions, I mean pay our workers, we cannot possibly continue.  So while it may seem trivial, we believe it to be of upmost importance that our policy is 'understood' by all those who share in our Etsy Family. 
+  We have a few individuals who we would like to extend a special offer, along with a reminder of how much Etsy values their patronage. 
+  We believe you to have a particular set of skills, that make you ideally suited to extend these offers, on our behalf. 
+ 
+  Please see below: 
+ Name: Murl Heidenreich, Amount Owed: $1083.31 
+Name: Brendon Armstrong, Amount Owed: $1072.65 
+Name: Marvin Quigley, Amount Owed: $1071.04 
+Name: Margot Kautzer, Amount Owed: $1047.68 
+Name: Junius Connelly, Amount Owed: $1019.48 
+Name: Pablo Kuhlman, Amount Owed: $1015.95 
+Name: Ron Luettgen, Amount Owed: $1008.09 
+Name: Monserrate O'Keefe, Amount Owed: $1002.74 
+Name: Giovani Fritsch, Amount Owed: $998.39 
+Name: Austen Wyman, Amount Owed: $996.32 
+Please note, for each dear customer that chooses to accept our gracious offer, you will receive a 10% portion in recognition, of your hard work.  Thank you, and please, don't contact us directly, we'll contact you. 
+ 
+ Sincerely, 
+ The Etsy Family,
+  We meet your catnip pillow needs 
