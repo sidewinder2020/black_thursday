@@ -36,6 +36,10 @@ attr_reader :id,
     end
   end
 
+  def name
+    @first_name + " " + @last_name
+  end
+
   def top_number_of_items_sold_by_invoice
     valid_invoices.max_by do |invoice|
       invoice.quantity_of_items
@@ -50,6 +54,20 @@ attr_reader :id,
     invoices.find_all do |invoice|
       invoice.is_paid_in_full?
     end
+  end
+
+  def invalid_invoices
+    invoices.find_all do |invoice|
+      !(invoice.is_paid_in_full?)
+    end
+  end
+
+  def total_of_unpaid_invoices
+    sum = 0
+    invalid_invoices.each do |invalid_invoice|
+      sum += invalid_invoice.total
+    end
+    ((sum / 100).to_f).round(2)
   end
 
   def all_purchased_items

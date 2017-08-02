@@ -60,4 +60,8 @@ class CustomerTest < Minitest::Test
   def test_find_customer_invoices_by_year_does_thing
     assert_equal 1, @for_realsies_customer.find_customer_invoices_by_year(2009).count
   end
+
+  def test_total_of_unpaid_invoices
+    assert_equal 712.63, @for_realsies_customer.total_of_unpaid_invoices
+  end
 end

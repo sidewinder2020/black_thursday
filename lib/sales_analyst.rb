@@ -4,6 +4,7 @@ require_relative './sa_modules/sa_invoice_analysis'
 require_relative './sa_modules/sa_item_analysis'
 require_relative './sa_modules/sa_customer_analysis'
 require_relative './sa_modules/sa_math'
+require_relative './sa_modules/sa_bounty_hunter'
 require 'bigdecimal'
 require 'date'
 require 'pry'
@@ -14,6 +15,7 @@ class SalesAnalyst
   include SaItemAnalysis
   include SaCustomerAnalysis
   include SaMath
+  include SaBountyHunter
 
   def initialize(sales_engine)
     @se = sales_engine
