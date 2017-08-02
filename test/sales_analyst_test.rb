@@ -121,4 +121,9 @@ class SalesAnalystTest < Minitest::Test
     assert_equal 2, @sa.highest_volume_items(1).count
   end
 
+  def test_find_deadbeat_customers
+    assert_equal 7, @sa.customers_with_unpaid_invoices.count
+    assert_instance_of Customer, @sa.customers_with_unpaid_invoices.first
+  end
+
 end

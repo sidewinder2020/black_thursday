@@ -117,4 +117,11 @@ class SalesAnalyst
       crappy_array
     end
 
+    def customers_with_unpaid_invoices
+      all_customers = @se.all_customers
+      all_customers.find_all do |customer|
+        customer.unpaid_invoices?
+      end
+    end
+
 end

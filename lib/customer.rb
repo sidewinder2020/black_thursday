@@ -68,4 +68,10 @@ attr_reader :id,
     end
   end
 
+  def unpaid_invoices?
+    invoices.any? do |invoice|
+      !(invoice.is_paid_in_full?)
+    end    
+  end
+
 end
