@@ -84,7 +84,7 @@ module SaCustomerAnalysis
         end
       end
       crappy_array
-    end
+  end
 
   def customers_with_unpaid_invoices
     all_customers = @se.all_customers

@@ -85,16 +85,16 @@ module SaInvoiceAnalysis
   end
 
   def best_invoice_by_revenue
-    invoice = valid_invoices_array.max_by do |invoice|
+    best_invoice = valid_invoices_array.max_by do |invoice|
       invoice.total
     end
-    invoice
+    best_invoice
   end
 
   def best_invoice_by_quantity
-    invoice = valid_invoices_array.max_by do |invoice|
+    best_invoice = valid_invoices_array.max_by do |invoice|
       invoice.quantity_of_items
     end
-    invoice
+    best_invoice
   end
 end

@@ -9,7 +9,8 @@ require_relative './se_modules/se_items_methods'
 require_relative './se_modules/se_invoices_methods'
 require_relative './se_modules/se_invoice_item_methods'
 require_relative './se_modules/se_customer_methods'
-require 'pry'
+require_relative './se_modules/se_transaction_methods'
+require_relative './se_modules/se_repositories'
 
 class SalesEngine
   include SeMerchantsMethods
@@ -17,6 +18,8 @@ class SalesEngine
   include SeInvoicesMethods
   include SeInvoiceItemMethods
   include SeCustomerMethods
+  include SeTransactionMethods
+  include SeRepositories
 
   attr_reader :files,
               :items,
@@ -37,58 +40,5 @@ class SalesEngine
       @invoice_items = invoice_item_repository(csv_hash)
       @customers = customer_repository(csv_hash)
       @transactions = transaction_repository(csv_hash)
-  end
-
-  def customer_repository(csv_hash)
-    if csv_hash[:customers]
-      CustomerRepository.new(csv_hash[:customers], self)
-    end
-  end
-
-  def invoice_item_repository(csv_hash)
-    if csv_hash[:invoice_items]
-      InvoiceItemRepository.new(csv_hash[:invoice_items], self)
-    end
-  end
-
-  def item_repository(csv_hash)
-    if csv_hash[:items]
-      ItemRepository.new(csv_hash[:items], self)
-    end
-  end
-
-  def merchant_repository(csv_hash)
-    if csv_hash[:merchants]
-      MerchantRepository.new(csv_hash[:merchants], self)
-    end
-  end
-
-  def invoice_repository(csv_hash)
-    if csv_hash[:invoices]
-      InvoiceRepository.new(csv_hash[:invoices], self)
-    end
-  end
-
-  def transaction_repository(csv_hash)
-    if csv_hash[:transactions]
-      TransactionRepository.new(csv_hash[:transactions], self)
-    end
-  end
-
-  def find_all_items_by_invoice_id(invoice_id)
-    item_array = []
-    invoice_item_array = @invoice_items.find_all_by_invoice_id(invoice_id)
-    invoice_item_array.each do |invoice_item|
-      item_array << @items.find_by_id(invoice_item.item_id)
-    end
-    item_array
-  end
-
-  def find_all_transactions_by_invoice_id(invoice_id)
-    @transactions.find_all_by_invoice_id(invoice_id)
-  end
-
-  def get_invoice_items_by_invoice_id(invoice_id)
-    @invoice_items.find_all_by_invoice_id(invoice_id)
   end
 end
