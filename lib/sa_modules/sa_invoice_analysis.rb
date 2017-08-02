@@ -83,4 +83,18 @@ module SaInvoiceAnalysis
     ((@se.number_of_invoices_by_status[status].to_f /
     @se.all_invoices_count) * 100).round(2)
   end
+
+  def best_invoice_by_revenue
+    invoice = valid_invoices_array.max_by do |invoice|
+      invoice.total
+    end
+    invoice
+  end
+
+  def best_invoice_by_quantity
+    invoice = valid_invoices_array.max_by do |invoice|
+      invoice.quantity_of_items
+    end
+    invoice
+  end
 end
