@@ -130,4 +130,8 @@ class SalesAnalystTest < Minitest::Test
     assert_instance_of Invoice, @sa.best_invoice_by_revenue
   end
 
+  def test_find_best_invoice_by_quantity_of_items
+    assert_instance_of Invoice, @sa.best_invoice_by_quantity
+  end
+
 end
