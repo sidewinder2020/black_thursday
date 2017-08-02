@@ -1,4 +1,8 @@
 module SeInvoicesMethods
+  def all_invoices
+    @invoices.all
+  end
+
   def all_invoices_count
     @invoices.all.count
   end

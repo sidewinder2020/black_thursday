@@ -124,4 +124,21 @@ class SalesAnalyst
       end
     end
 
+    def best_invoice_by_revenue
+      invoice_array = []
+      @se.all_invoices.each do |invoice|
+        if invoice.is_paid_in_full?
+          invoice_array << invoice
+        end
+      end
+      invoice = invoice_array.max_by do |invoice|
+        invoice.total
+      end
+      invoice
+    end
+
+    def best_invoice_by_quantity
+
+    end
+
 end
