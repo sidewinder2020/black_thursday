@@ -16,7 +16,8 @@ class InvoiceItem
     @item_id = invoice_item_hash[:item_id]
     @invoice_id = invoice_item_hash[:invoice_id]
     @quantity = invoice_item_hash[:quantity]
-    @unit_price = BigDecimal.new(invoice_item_hash[:unit_price].to_s.insert(-3, "."))
+    @unit_price = BigDecimal.new(
+    invoice_item_hash[:unit_price].to_s.insert(-3, "."))
     @created_at = Time.parse(invoice_item_hash[:created_at])
     @updated_at = Time.parse(invoice_item_hash[:updated_at])
   end

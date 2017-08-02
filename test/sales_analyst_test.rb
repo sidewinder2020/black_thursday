@@ -108,4 +108,17 @@ class SalesAnalystTest < Minitest::Test
     assert_equal 8, @sa.items_bought_in_year(1, 2009).count
   end
 
+  def test_get_all_customer_ids_gets_customer_ids
+    assert_equal 37, @sa.get_all_customer_item_ids(1).count
+    assert_instance_of Hash, @sa.get_all_customer_item_ids(1)
+  end
+
+  def test_count_item_id_array_returns_hash
+    assert_equal 2, @sa.get_highest_count_item_ids(1).count
+  end
+
+  def test_it_can_find_highest_volume_items
+    assert_equal 2, @sa.highest_volume_items(1).count
+  end
+
 end

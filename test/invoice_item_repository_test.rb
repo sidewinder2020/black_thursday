@@ -22,7 +22,7 @@ class InvoiceItemRepositoryTest < Minitest::Test
   end
 
   def test_merchants_all
-    assert_equal 38, @ivitr.all.count
+    assert_equal 47, @ivitr.all.count
   end
 
   def test_find_invoice_by_invoice_id

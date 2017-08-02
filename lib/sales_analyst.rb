@@ -90,4 +90,31 @@ class SalesAnalyst
       item_array
   end
 
+  def highest_volume_items(customer_id)
+    get_highest_count_item_ids(customer_id).map do |item_id|
+      @se.find_item_by_item_id(item_id)
+    end
+  end
+
+  def get_all_customer_item_ids(customer_id)
+    item_id_hash = {}
+    customer = @se.find_customer_by_id(customer_id)
+      customer.invoices.each do |invoice|
+        item_id_hash.merge!(invoice.quantity_by_item_id)
+      end
+      item_id_hash
+  end
+
+  def get_highest_count_item_ids(customer_id)
+    crappy_array = []
+    item_id_hash = get_all_customer_item_ids(customer_id)
+    max = item_id_hash.values.max
+      item_id_hash.each do |key, value|
+        if value == max
+           crappy_array << key
+        end
+      end
+      crappy_array
+    end
+
 end

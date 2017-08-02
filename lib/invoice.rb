@@ -48,6 +48,14 @@ attr_reader :id,
     @inr.get_invoice_items_by_invoice_id(@id)
   end
 
+  def quantity_by_item_id
+    item_hash = {}
+    invoice_items.each do |item|
+      item_hash[item.item_id] = item.quantity
+    end
+    item_hash
+  end
+
   def total
     sum = 0
     invoice_items.each do |invoice_item|
