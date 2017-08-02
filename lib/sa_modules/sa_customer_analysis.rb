@@ -106,7 +106,7 @@ module SaCustomerAnalysis
     end
     the_hit_hash
   end
-  
+
   def valid_invoices_array
     invoice_array = []
     @se.all_invoices.each do |invoice|
