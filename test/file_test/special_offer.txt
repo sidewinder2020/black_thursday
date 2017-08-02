@@ -1,0 +1,12 @@
+email intro 
+name: Murl Heidenreich, amnt owed: $1083.31 
+name: Brendon Armstrong, amnt owed: $1072.65 
+name: Marvin Quigley, amnt owed: $1071.04 
+name: Margot Kautzer, amnt owed: $1047.68 
+name: Junius Connelly, amnt owed: $1019.48 
+name: Pablo Kuhlman, amnt owed: $1015.95 
+name: Ron Luettgen, amnt owed: $1008.09 
+name: Monserrate O'Keefe, amnt owed: $1002.74 
+name: Giovani Fritsch, amnt owed: $998.39 
+name: Austen Wyman, amnt owed: $996.32 
+end of email 
