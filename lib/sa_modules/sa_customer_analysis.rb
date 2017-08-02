@@ -93,6 +93,21 @@ module SaCustomerAnalysis
     end
   end
 
+  def ten_most_wanted
+    the_hit_hash = Hash.new
+    top_ten_customers_by_outstanding_invoices.each do |customer|
+      the_hit_hash[customer.name] = customer.total_of_unpaid_invoices
+    end
+    binding.pry
+    the_hit_hash
+  end
+
+  def top_ten_customers_by_outstanding_invoices
+    customers_with_unpaid_invoices.max_by(10) do |customer|
+      customer.total_of_unpaid_invoices
+    end
+  end
+
   def valid_invoices_array
     invoice_array = []
     @se.all_invoices.each do |invoice|
